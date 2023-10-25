@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ajax07</title>
+    <!-- Jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <button onclick="ex07Fn()">ex07 함수 호출</button>
+</body>
+<script>
+    const ex07Fn = () => {
+        const val1 = "Hello SpringBoot..!";
+
+        const params = {
+            "param1": val1,
+            "param2": "안녕"
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/ex07",
+            data: JSON.stringify(params), // http 요청이 왔을 때, JSON 형태로 전달한다는 의미이다.
+            contentType: "application/json", // 서버에 전달된 데이터의 타입을 명시한것이다.
+            success: function (res) {
+                console.log("성공", res);
+                console.log("param1", res.param1);
+            },
+            error: function (res) {
+                console.log("실패");
+            }
+        });
+    };
+</script>
+
+</html>
